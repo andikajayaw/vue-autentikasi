@@ -1,55 +1,47 @@
 <template>
-  <v-form v-model="valid">
-    <v-container>
-      <v-row>
-        <v-col cols="12" md="4">
-          <v-text-field
-            v-model="firstname"
-            :rules="nameRules"
-            :counter="10"
-            label="First name"
-            required
-          ></v-text-field>
-        </v-col>
-
-        <v-col cols="12" md="4">
-          <v-text-field
-            v-model="lastname"
-            :rules="nameRules"
-            :counter="10"
-            label="Last name"
-            required
-          ></v-text-field>
-        </v-col>
-
-        <v-col cols="12" md="4">
-          <v-text-field
-            v-model="email"
-            :rules="emailRules"
-            label="E-mail"
-            required
-          ></v-text-field>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-form>
+  <v-container>
+    <v-layout wrap style="margin-top: 150px">
+      <v-flex sm12 md6 offset-md3>
+        <v-card>
+          <v-col md="12">
+            <v-row>
+              <v-col md="12">
+                <v-text-field label="Username"></v-text-field>
+              </v-col>
+              <v-col md="12">
+                <v-text-field label="Password"></v-text-field>
+              </v-col>
+            </v-row>
+          </v-col>
+          <v-col md="12">
+            <v-row>
+              <v-col md12>
+                <v-btn block color="primary">Login</v-btn>
+              </v-col>
+              <v-col md12>
+                <v-btn block color="primary" @click="redirectDaftar"
+                  >Daftar</v-btn
+                >
+              </v-col>
+              <v-col md12>
+                <p>
+                  Lupa password ?
+                  <router-link to="/lupa-password">Klik disini</router-link>
+                </p>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
-
 <script>
 export default {
-  data: () => ({
-    valid: false,
-    firstname: "",
-    lastname: "",
-    nameRules: [
-      (v) => !!v || "Name is required",
-      (v) => v.length <= 10 || "Name must be less than 10 characters",
-    ],
-    email: "",
-    emailRules: [
-      (v) => !!v || "E-mail is required",
-      (v) => /.+@.+/.test(v) || "E-mail must be valid",
-    ],
-  }),
+  methods: {
+    redirectDaftar() {
+      this.$router.push("/daftar");
+    },
+  },
 };
 </script>
